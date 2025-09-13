@@ -1,0 +1,17 @@
+{
+  "manifestVersion": 5,
+  "id": "com.aibridge.pro",
+  "name": "AI Bridge Pro",
+  "version": "0.1.0",
+  "host": { "app": "PS", "minVersion": "25.0.0" },
+  "entrypoints": [
+    {
+      "type": "panel",
+      "id": "ai-bridge-pro",
+      "label": "AI Bridge Pro",
+      "main": "index.html",
+      "icon": "assets/icon.png",
+      "minimumSize": { "width": 320, "height": 480 }
+    }
+  ]
+}
