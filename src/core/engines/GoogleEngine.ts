@@ -22,10 +22,14 @@ export class GoogleEngine implements Engine {
       generationConfig: { responseModalities: ['IMAGE'] }
     };
 
+    // Prefer the environment's built-in fetch if it exists; cross-fetch's polyfill
+    // can conflict with runtimes that already supply a fetch implementation, which
+    // manifested as network errors when calling the Google API.
+    const f: any = (globalThis as any).fetch || fetch;
     const controller = new AbortController();
     const to = setTimeout(() => controller.abort(), this.timeoutMs);
     try {
-      const res = await (fetch as any)(this.endpoint(), {
+      const res = await f(this.endpoint(), {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(body),
