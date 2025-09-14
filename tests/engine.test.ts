@@ -1,4 +1,5 @@
 import { NanoBananaEngine } from '../src/core/engines/NanoBananaEngine';
+import { FluxEngine } from '../src/core/engines/FluxEngine';
 // Node polyfills for test
 // @ts-ignore
 global.atob = (b64)=> Buffer.from(b64, 'base64').toString('binary');
@@ -8,5 +9,11 @@ global.fetch = (url, opts)=> Promise.resolve({ ok: true, status: 200, json: asyn
 test('nanobanana engine returns bytes', async () => {
   const eng = new NanoBananaEngine('https://api.example.com', 'KEY');
   const res = await eng.generate({engine:'nanobanana', prompt:'hello', negative:'', seed:null, strength:0.7, refWeight:0, refImage:null, region:null});
+  expect(res.image.byteLength).toBeGreaterThan(0);
+});
+
+test('flux engine returns bytes', async () => {
+  const eng = new FluxEngine('https://api.example.com', 'KEY');
+  const res = await eng.generate({engine:'flux', prompt:'hello', negative:'', seed:null, strength:0.7, refWeight:0, refImage:null, region:null});
   expect(res.image.byteLength).toBeGreaterThan(0);
 });

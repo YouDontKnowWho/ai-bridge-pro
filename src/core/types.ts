@@ -1,4 +1,4 @@
-export type EngineName = 'nanobanana' | 'flux';
+export type EngineName = 'nanobanana' | 'flux' | 'sandbox' | 'google';
 export interface GenerationRequest {
   engine: EngineName;
   prompt: string;

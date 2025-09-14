@@ -9,7 +9,7 @@
       "type": "panel",
       "id": "ai-bridge-pro",
       "label": "AI Bridge Pro",
-      "main": "index.html",
+      "main": "main.js",
       "icon": "assets/icon.png",
       "minimumSize": { "width": 320, "height": 480 }
     }

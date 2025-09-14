@@ -4,12 +4,17 @@
   "private": true,
   "description": "AI Bridge Pro for Photoshop (UXP panel): batch, history, presets, ref-image flow.",
   "scripts": {
+    "pretest": "node -e \"const [maj]=process.versions.node.split('.'); if(+maj<18){console.error('Node 18+ required. Current:', process.version); process.exit(1)}\"",
+    "postbuild": "node -e \"const fs=require('fs'); fs.copyFileSync('dist/index.html', 'index.html'); fs.copyFileSync('dist/bundle.js', 'bundle.js');\"",
     "dev": "webpack --mode development --watch",
     "build": "webpack --mode production",
     "test": "jest --runInBand",
     "pack:zip": "node scripts/build_pack.js",
     "make:icon": "node scripts/make_icon.js",
     "ci": "npm run build && npm test"
+  },
+  "engines": {
+    "node": ">=18"
   },
   "devDependencies": {
     "@types/jest": "^29.5.12",

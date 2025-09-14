@@ -11,7 +11,7 @@ export function QueuePanel({queue}:{queue:QueueManager}){
       <div className="scroll">
         {jobs.map(j => (
           <div key={j.id} className="list-item">
-            <div><b>{j.status.toUpperCase()}</b> – {j.req.engine}</div>
+            <div><b>{j.status.toUpperCase()}</b> – {j.req.engine} {j.attempts ? <span className="badge">attempts: {j.attempts}</span> : null}</div>
             <div>{j.req.prompt.slice(0,80)}</div>
             {j.error && <div style={{color:'crimson'}}>Error: {j.error}</div>}
           </div>
