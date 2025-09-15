@@ -49,3 +49,9 @@ function App(){
 }
 const root = createRoot(document.getElementById('root')!);
 root.render(<App/>);
+
+// Ensure this entry produces runtime output even if the rest is type-only.
+// This prevents "TypeScript emitted no output" from ts-loader.
+if (typeof console !== 'undefined') {
+  console.info('[AIBridgePro] index.tsx loaded');
+}
